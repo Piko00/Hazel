@@ -434,7 +434,7 @@
     <div class="modal-content">
       <span class="close-button" onclick="closeModal('nikan-modal')">&times;</span>
       <h2>About Nikan</h2>
-    </p>!ارور:بچه خوابیده لطفا سر و صدا نکنید.</p>
+    </p>ارور:بچه خوابیده لطفا سر و صدا نکنید!</p>
     </div>
   </div>
 
@@ -525,33 +525,16 @@
       document.getElementById(modalId).style.display = "none";
     }
 
-    // --- PIKO Page Logic ---
-    const pikoCard = document.getElementById('piko-card');
-    // --- Spawn PIKO animation ---
   
-            if (y <= 0 || y >= window.innerHeight - size * 2) {
-                dy *= -1; // Reverse vertical direction
-            }
-
-            el.style.left = x + "px";
-            el.style.top = y + "px";
-
-            requestAnimationFrame(move);
-        }
-        move();
-    }
-
-    
-
     // --- Card Click Listeners ---
     document.getElementById('mom-card').addEventListener('click', () => openModal('mom-modal'));
     document.getElementById('dad-card').addEventListener('click', () => openModal('dad-modal'));
     document.getElementById('piko-card').addEventListener('click', () => {
         openModal('piko-modal');
     });
-    document.getElementById('dylan-card').addEventListener('click', () => openModal('dylan-modal'));
+    document.getElementById('nikan-card').addEventListener('click', () => openModal('nikan-modal'));
 
-    // --- PIKO Modal Close behavior ---
+    
     
 
     // --- Sound Play Function ---
