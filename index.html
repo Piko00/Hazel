@@ -388,11 +388,7 @@
   </div>
 
   <!-- Section 5: PIKO's Special Page (Integrated within the same page) -->
-  <div id="piko-page" class="section">
-      <div class="piko-page-content">
-          <p>Welcome to PIKO's special corner!</p>
-      </div>
-  </div>
+
 
   <!-- Modals for each person -->
   <div id="mom-modal" class="modal">
@@ -531,37 +527,8 @@
 
     // --- PIKO Page Logic ---
     const pikoCard = document.getElementById('piko-card');
-    const pikoPage = document.getElementById('piko-page');
-    const pikoModal = document.getElementById('piko-modal');
-    const pikoPageContent = document.querySelector('#piko-page .piko-page-content');
-
     // --- Spawn PIKO animation ---
-    function spawnPiko() {
-        const el = document.createElement("div");
-        el.className = "piko-fly";
-        el.innerText = "PIKO";
-
-        let size = 20 + Math.random() * 40;
-        el.style.fontSize = size + "px";
-
-        // Start from a random position
-        let x = Math.random() * (window.innerWidth - size * 3);
-        let y = Math.random() * (window.innerHeight - size * 2);
-
-        document.getElementById("piko-page").appendChild(el);
-
-        // Random initial direction
-        let dx = (Math.random() * 2 - 1) * 2; // Speed between -2 and 2
-        let dy = (Math.random() * 2 - 1) * 2;
-
-        function move() {
-            x += dx;
-            y += dy;
-
-            // Bounce off the walls
-            if (x <= 0 || x >= window.innerWidth - size * 3) {
-                dx *= -1; // Reverse horizontal direction
-            }
+  
             if (y <= 0 || y >= window.innerHeight - size * 2) {
                 dy *= -1; // Reverse vertical direction
             }
@@ -574,35 +541,18 @@
         move();
     }
 
-    function startPikoAnimation() {
-        // Clear existing Piko elements if any and reset content
-        pikoPage.innerHTML = '<div class="piko-page-content"><p>Welcome to PIKO\\\'s special corner!</p></div>';
-        pikoPage.style.display = 'block'; // Show the PIKO page
-        document.getElementById('world').style.display = 'none'; // Hide the world section
-
-        // Start spawning PIKOs
-        for(let i = 0; i < 15; i++) { // Spawn 15 Pikos initially
-            setTimeout(spawnPiko, i * 500); // Stagger the spawning
-        }
-    }
+    
 
     // --- Card Click Listeners ---
     document.getElementById('mom-card').addEventListener('click', () => openModal('mom-modal'));
     document.getElementById('dad-card').addEventListener('click', () => openModal('dad-modal'));
     document.getElementById('piko-card').addEventListener('click', () => {
         openModal('piko-modal');
-        startPikoAnimation(); // Start PIKO animation when PIKO modal is opened
     });
     document.getElementById('dylan-card').addEventListener('click', () => openModal('dylan-modal'));
 
     // --- PIKO Modal Close behavior ---
-    pikoModal.addEventListener('click', (event) => {
-        if (event.target === pikoModal || event.target.classList.contains('close-button')) {
-            closeModal('piko-modal');
-            pikoPage.style.display = 'none'; // Hide the PIKO page
-            document.getElementById('world').style.display = 'block'; // Show the world section again
-        }
-    });
+    
 
     // --- Sound Play Function ---
     function playSound(soundId) {
